@@ -4,12 +4,30 @@ Build with Minecraft blocks in GMod: grid-snapped blocks, a hotbar, a block pick
 
 ## Install
 
-1. Pull textures and sounds from your own Minecraft install. This has already been run once for 26.3; run it again after a Minecraft update:
+You need Garry's Mod and Minecraft Java Edition (launched at least once). The addon ships without Mojang's textures and sounds; the installer copies them from your own Minecraft install.
+
+### Windows
+
+1. Download this repo (**Code → Download ZIP**) and unzip it.
+2. Double-click `tools\install_windows.bat`.
+3. Start Garry's Mod, or restart it if it's already open.
+
+The installer finds Garry's Mod through Steam (including libraries on other drives), copies the addon into `garrysmod\addons\minecraft_blocks`, and fills in textures, sounds and spawn menu icons from `%APPDATA%\.minecraft`. You don't need Python. If something isn't found automatically, run it from PowerShell with a path:
+
+```
+powershell -ExecutionPolicy Bypass -File tools\install_windows.ps1 -GModDir "D:\SteamLibrary\steamapps\common\GarrysMod\garrysmod"
+```
+
+Other options: `-MinecraftDir`, `-Version` (defaults to the newest installed release). Run it again after a Minecraft update.
+
+### Linux / macOS
+
+1. Pull textures and sounds from your Minecraft install:
    ```
    python3 tools/extract_minecraft_assets.py
    ```
 2. Copy (or symlink) `minecraft_blocks/` into `GarrysMod/garrysmod/addons/`
-   (Linux: `~/.steam/steam/steamapps/common/GarrysMod/garrysmod/addons/`).
+   (Linux: `~/.steam/steam/steamapps/common/GarrysMod/garrysmod/addons/`; Snap Steam: `~/snap/steam/common/.local/share/Steam/steamapps/common/GarrysMod/garrysmod/addons/`).
 
 ## Play
 
