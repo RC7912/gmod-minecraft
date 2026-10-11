@@ -6,9 +6,13 @@ Build with Minecraft blocks in GMod: grid-snapped blocks, a hotbar, a block pick
 
 You need Garry's Mod and Minecraft Java Edition (launched at least once). The addon ships without Mojang's textures and sounds; the installer copies them from your own Minecraft install.
 
+**Downloads:**
+- **Windows:** [gmod-minecraft-windows.zip](https://github.com/RC7912/gmod-minecraft/releases/latest/download/gmod-minecraft-windows.zip)
+- **Linux / macOS:** [gmod-minecraft-linux-macos.zip](https://github.com/RC7912/gmod-minecraft/releases/latest/download/gmod-minecraft-linux-macos.zip)
+
 ### Windows
 
-1. Download this repo (**Code → Download ZIP**) and unzip it.
+1. Download **gmod-minecraft-windows.zip** and unzip it.
 2. Double-click `tools\install_windows.bat`.
 3. Start Garry's Mod, or restart it if it's already open.
 
@@ -22,12 +26,14 @@ Other options: `-MinecraftDir`, `-Version` (defaults to the newest installed rel
 
 ### Linux / macOS
 
-1. Pull textures and sounds from your Minecraft install:
+1. Download **gmod-minecraft-linux-macos.zip** and unzip it.
+2. In a terminal, run:
    ```
-   python3 tools/extract_minecraft_assets.py
+   ./tools/install_linux.sh
    ```
-2. Copy (or symlink) `minecraft_blocks/` into `GarrysMod/garrysmod/addons/`
-   (Linux: `~/.steam/steam/steamapps/common/GarrysMod/garrysmod/addons/`; Snap Steam: `~/snap/steam/common/.local/share/Steam/steamapps/common/GarrysMod/garrysmod/addons/`).
+3. Start Garry's Mod, or restart it if it's already open.
+
+It finds Garry's Mod in normal, Snap and Flatpak Steam installs (and on macOS), copies the addon and fills in textures, sounds and icons from your Minecraft install. It needs `python3`; spawn menu icons also need Pillow (`pip install pillow`) but everything else works without it. Options: `--gmod-dir`, `--addon-dir`, `--mc`, `--version`.
 
 ## Play
 
