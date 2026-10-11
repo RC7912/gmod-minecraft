@@ -349,9 +349,15 @@ end
 function ENT:Teleport( around, radius )
 	local mins, maxs = self:HullBounds()
 	local center = around or self:GetPos()
-	for _ = 1, 16 do
+	for _ = 1, 24 do
 		local try = center + Angle( 0, math.random( 0, 359 ), 0 ):Forward() * math.Rand( radius * 0.4, radius )
-		local down = util.TraceLine( { start = try + Vector( 0, 0, 300 ), endpos = try - Vector( 0, 0, 600 ), mask = MASK_NPCSOLID, filter = self } )
+		-- search for floor from a few heights, lowest first, so a mob at the bottom of
+		-- a deep pool can still reach the shore above it
+		local down
+		for _, up in ipairs( { 300, radius * 0.5, radius } ) do
+			down = util.TraceLine( { start = try + Vector( 0, 0, up ), endpos = try - Vector( 0, 0, 600 ), mask = MASK_NPCSOLID, filter = self } )
+			if not down.StartSolid then break end
+		end
 		if down.Hit and not down.StartSolid and down.HitNormal.z > 0.7 then
 			local spot = down.HitPos + Vector( 0, 0, 2 )
 			local room = util.TraceHull( { start = spot, endpos = spot, mins = mins, maxs = maxs, mask = MASK_NPCSOLID, filter = self } )
