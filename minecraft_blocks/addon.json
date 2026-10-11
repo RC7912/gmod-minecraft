@@ -1,0 +1,6 @@
+{
+	"title": "Minecraft Blocks",
+	"type": "tool",
+	"tags": ["build", "fun"],
+	"ignore": ["*.psd", "*.md"]
+}

@@ -1,0 +1,8 @@
+# Mojang's textures and sounds are not redistributable.
+# Generate them locally from your own Minecraft install:
+#   python3 tools/extract_minecraft_assets.py
+minecraft_blocks/materials/minecraft/
+minecraft_blocks/sound/minecraft/
+
+__pycache__/
+*.pyc
